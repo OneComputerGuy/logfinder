@@ -10,11 +10,13 @@ Script that allows to parse Blackboard Learn logs in bulk and isolate stack trac
 | bb-sqlerror-log | Partial support | Single line of match            |
 | stdout-stderr   | Partial support | Single line of match            |
 
-For the longs with partial support, given the nature of how those logs are written, there's not a defined way to capture the entire stack trace from the file directly. The search will show what server has the hit and the line number for easy identification
+For the logs with partial support, given the nature of how those logs are written, there's no defined way to capture the entire stack trace from the file directly. The search will show what server has the hit and the line number for easy identification
+
+# Requirements
+
+The script requires Python3 to be installed (no additional packages are needed since the libraries used are included by default with Python), please make sure it's available before running the script, It also requires the logs to be already converted either by manually downloading them from the system through the UI and running the conversion script (available in the same download screen) or downloading directly from the S3 bucket which converts them directly (available for Learn Support only)
 
 # Usage:
-
-The script requires Python3 to be installed, please make sure it's available before running the script., It also requires the logs to be already converted (either by manually downloading them from the system through the UI and running the conversion script or downloading directly from the S3 bucket which converts them directly)
 
 The script will automatically walk through the folder you specify and get the logs from there without the need of manually specifying the logs available in that folder
 
