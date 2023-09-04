@@ -20,7 +20,7 @@ The script requires Python3 to be installed (no additional packages are needed s
 
 If you're not using git on your system, we strongly recommend installing it and setting it up by following this guide: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-This will allow you to download the script and any subsequent updates easily. Once git is installed you can download it by running the following command on the folder where you want to save it:
+This will allow you to download the script and any subsequent updates easily. Once git is installed you can download this tool by running the following command on the folder where you want to save it:
 
 ```shell
 git clone https://github.com/OneComputerGuy/logfinder.git
