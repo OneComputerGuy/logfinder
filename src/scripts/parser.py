@@ -33,42 +33,58 @@ def searchSingleLineLog(filePaths, typeOfLog, query):
   results = []
   for file in filePaths:
       if typeOfLog in file:
-        fName = '\n\n------------------------------------------\nFrom server ' + getServerIp(file) + ':\n------------------------------------------\n\n'
+        fName = '\n\n------------------------------------------\nFrom server ' + getServerIp(file) + ':\n------------------------------------------\n'
         results.append(fName)
         with open(file, 'r') as currentFile:
+          fileData = []
+          
           for lineNumber, line in enumerate(currentFile):
             if query.lower() in line.lower():
-                results.append(str(lineNumber + 1) + ': ' + line)
-        
+                fileData.append(str(lineNumber + 1) + ': ' + line)
+          if len(fileData) > 0:
+            for line in fileData:
+              results.append(line)
+          else:
+            results.append('No Results were found on this server')
+  
+  
   printResults(results)
     
 def searchMultipleLineLog(filePaths, typeOfLog, query, hasHeaders = False):
   results = []
   for file in filePaths:
       if typeOfLog in file:
-        fName = '\n\n------------------------------------------\nFrom server ' + getServerIp(file) + ':\n------------------------------------------\n\n'
+        fName = '\n\n------------------------------------------\nFrom server ' + getServerIp(file) + ':\n------------------------------------------'
         results.append(fName)
         with open(file, 'r') as currentFile:
           capturingStack = False
+          fileData = []
           for lineNumber, line in enumerate(currentFile):
             if query.lower() in line.lower():
                 capturingStack = True
-                results.append(str(lineNumber + 1) + ': ' + line)
+                fileData.append(str(lineNumber + 1) + ': ' + line)
             else:
               if capturingStack:
                 if(hasHeaders):
                   if line.split(' | ')[3].startswith('\t') or line.split(' | ')[3].startswith('Caused by'):
-                    results.append(line)
+                    fileData.append(line)
                   else:
                     capturingStack = False
                 else:
                   if line.startswith('\t') or line.startswith('Caused by'):
-                    results.append(line)
+                    fileData.append(line)
                   else:
                     capturingStack = False
-        
+          if len(fileData) > 0:
+            for line in fileData:
+              results.append(line)
+          else:
+            results.append('No Results were found on this server')
+            
   printResults(results)
-    
+
+
+
 def printResults(results):
   if not args.output is None:
     writeToFile(args.output, args.search, args.type, results)

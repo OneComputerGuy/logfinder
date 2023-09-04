@@ -16,6 +16,56 @@ For the logs with partial support, given the nature of how those logs are writte
 
 The script requires Python3 to be installed (no additional packages are needed since the libraries used are included by default with Python), please make sure it's available before running the script, It also requires the logs to be already converted either by manually downloading them from the system through the UI and running the conversion script (available in the same download screen) or downloading directly from the S3 bucket which converts them directly (available for Learn Support only)
 
+## Git and GitHub
+
+If you're not using git on your system, we strongly recommend installing it and setting it up by following this guide: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+This will allow you to download the script and any subsequent updates easily. Once git is installed you can download it by running the following command on the folder where you want to save it:
+
+```shell
+git clone https://github.com/OneComputerGuy/logfinder.git
+```
+
+To retrieve/update the script with any available update, you only need to navigate on your command prompt window to the folder where the script is saved and running:
+
+```shell
+git pull
+```
+
+This will take care of the rest.
+
+## For Windows users:
+
+Make sure you can execute python3 directly from the command line by just running `python3 --version`, if you receive an error indicating that the command is not recognized, please follow these steps to add python to the environment variables of your system (remember to reboot your system after the change): https://www.educative.io/answers/how-to-add-python-to-path-variable-in-windows
+
+If after this step CMD is still not recognizing the command, execute the script specifying the entire path where your Python installation is. To determine the location, follow these steps:
+
+1. on your keyboard press Windows Key + R
+2. On the "Run" window that opens up, type "%appdata%" without quotes
+3. On the file explorer window that opens, go up a folder by clicking "AppData" in the address bar at the top
+4. After navigating to the AppData folder, go to Local > Programs > Python > <current installed version> and locate the python executable
+5. Once there, click the address bar at the top of the file explorer and copy the path
+
+Once you have this path, you can use it to replace python3 when needed, e.g: To check the version of python installed with this approach you need to paste into the command prompt window this:
+
+```shell
+C:\> C:\Users\<yourUser>\AppData\Local\Programs\Python\<versionInstalled>\python --version
+```
+
+## For Ubuntu/Linux/WSL systems
+
+Python should be installed by default with your installation, if not, you can install it using the following command:
+
+```shell
+sudo apt install python3
+```
+
+## For MacOS users:
+
+Python usually comes installed by default, if it's not available/installed, there are two options for this. The first one is to manually download and install Python from the original site, the second option is to use Homebrew to install it (Homebrew is the unofficial package manager for MacOS).
+
+To install Homebrew, follow the steps outlined in their site https://brew.sh/ and then, execute `brew install python`
+
 # Usage:
 
 The script will automatically walk through the folder you specify and get the logs from there without the need of manually specifying the logs available in that folder
